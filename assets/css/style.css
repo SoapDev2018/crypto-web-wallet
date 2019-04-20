@@ -1,0 +1,14 @@
+@font-face {
+  font-family: "Bellota-LightItalic";
+  src: url("../fonts/Bellota-LightItalic.otf");
+}
+
+@font-face {
+  font-family: "Bellota-BoldItalic";
+  src: url("../fonts/Bellota-BoldItalic.otf");
+}
+
+@font-face {
+  font-family: "Bellota-Regular";
+  src: url("../fonts/Bellota-Regular.otf");
+}

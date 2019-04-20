@@ -73,7 +73,7 @@ body {
     margin: 0 auto;
     border: 1px solid #EDEDED;
     border-radius: 7px;
-    padding: 5px;
+    padding: 4px;
     opacity: 0.95;
     min-height: 50%;
 }
@@ -134,4 +134,31 @@ input[type="text"]:hover, input[type="email"]:hover, input[type="password"]:hove
     font-family: 'Bellota-Regular', sans-serif;
     color: white;
     text-align: center;
+}
+
+.second {
+    display: none;
+}
+
+a {
+    text-decoration: none;
+    color: #6c6c6c;
+    font-family: 'Bellota-Regular', sans-serif;
+}
+
+.statusmsg {
+    font-family: 'Bellota-Regular', sans-serif;
+    font-size: 22px;
+    text-align: center;
+    padding: 3px;
+    background: #EDEDED;
+    border: 1px solid #DFDFDF;
+    text-decoration: none;
+    position: relative;
+    width: 35%;
+    margin: 0 auto;
+}
+
+.statusmsg_top {
+    padding-bottom: 20%;
 }
