@@ -1,0 +1,137 @@
+@font-face {
+    font-family: "Bellota-LightItalic";
+    src: url("../fonts/Bellota-LightItalic.otf");
+}
+
+@font-face {
+    font-family: "Bellota-BoldItalic";
+    src: url("../fonts/Bellota-BoldItalic.otf");
+}
+
+@font-face {
+    font-family: "Bellota-Regular";
+    src: url("../fonts/Bellota-Regular.otf");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    min-height: 100%;
+}
+
+.container {
+    min-height:100%;
+    position:relative;
+}
+
+.header {
+    background: #030303;
+    padding: 10px;
+    opacity: 0.45;
+}
+
+.body {
+    padding: 25px;
+    padding-bottom: 60px;   /* Height of the footer */
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;   /* Height of the footer */
+    background: #030303;
+    opacity: 0.55;
+}
+
+.header h2 {
+    font-family: "Bellota-BoldItalic", sans-serif;
+    color: #EDEDED;
+    font-size: 200%;
+    margin: 0;
+    text-align: center;
+
+}
+
+body {
+    background: url("../images/backgrounds/background.jpg") center center no-repeat;
+    background-size: 100%;
+}
+
+.form_wrapper {
+    text-align: center;
+    background-color: #fff;
+    top: 7%;
+    width: 35%;
+    position: relative;
+    margin: 0 auto;
+    border: 1px solid #EDEDED;
+    border-radius: 7px;
+    padding: 5px;
+    opacity: 0.95;
+    min-height: 50%;
+}
+
+.form_header {
+    font-family: "Bellota-BoldItalic", sans-serif;
+    width: 100%;
+    height: 45px;
+    background-color: darkgray;
+    color: white;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+    font-family: "Bellota-LightItalic", sans-serif;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+    margin-top: 10px;
+    width: 70%;
+    height: 35px;
+    margin-bottom: 5px;
+    padding-left: 5px;
+}
+
+input[type="submit"] {
+    font-family: "Bellota-LightItalic", sans-serif;
+    border: 1px solid #e5e5e5;
+    background-color: #ededed;
+    color: #030303;
+    text-shadow: #030b30 0.5px 0.5px 0px;
+    border-radius: 3px;
+    margin-top: 5px;
+    height: 35px;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+}
+
+input[type="text"]:hover, input[type="email"]:hover, input[type="password"]:hover, input[type="submit"]:hover {
+    border-color: darkgray;
+}
+
+.footer ul {
+    list-style-type: none;
+}
+
+.footer ul li {
+    float: left;
+    font-size: 100%;
+    padding-left: 360px;
+}
+
+.footer ul li a:hover {
+    opacity: 0.65;
+}
+
+.footer h4 {
+    font-family: 'Bellota-Regular', sans-serif;
+    color: white;
+    text-align: center;
+}
