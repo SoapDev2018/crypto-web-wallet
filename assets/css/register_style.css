@@ -75,7 +75,6 @@ body {
     border-radius: 7px;
     padding: 4px;
     opacity: 0.95;
-    min-height: 50%;
 }
 
 .form_header {
@@ -162,4 +161,8 @@ a {
 
 .statusmsg_top {
     padding-bottom: 20%;
+}
+
+.error_ {
+    font-family: 'Bellota-Regular', sans-serif;
 }

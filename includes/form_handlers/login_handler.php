@@ -11,8 +11,6 @@
         $row = mysqli_fetch_array($check_db_query);
         $username = $row['username'];
         $user_closed_query = mysqli_query($con, "SELECT * FROM users WHERE email='$email' AND user_closed='yes'");
-        if(mysqli_num_rows($user_closed_query) == 1)
-          $reopen_account=mysqli_query($con, "UPDATE users SET user_closed='no' WHERE email='$email'");
         $_SESSION['username'] = $username;
         header("Location: index.php");
         exit();
@@ -21,6 +19,8 @@
     }
     else {
       array_push($error_array, "Your account was not activated! A new activation email has been sent to your email<br>");
+
+      //Generating time based new hash if email verification was not done
       $date = date("Y-m-d H:i:s");
       $date = md5($date);
       $code = md5(rand(0, 1000));
@@ -39,7 +39,7 @@
       ';
       $headers = 'From:noreply@example.com' . "\r\n"; // Set from headers
       mail($to, $subject, $message, $headers); // Send our email
-      $hash_update_query = mysqli_query($con, "UPDATE users SET code='$hash' WHERE email='$email'");
+      $hash_update_query = mysqli_query($con, "UPDATE users SET hash='$hash' WHERE email='$email'");
     }
   }
 ?>

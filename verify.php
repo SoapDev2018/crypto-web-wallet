@@ -3,13 +3,13 @@
   if(isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && !empty($_GET['hash'])) {
     $email = mysqli_real_escape_string($con, strip_tags($_GET['email']));
     $hash = mysqli_real_escape_string($con, strip_tags($_GET['hash']));
-    $query = mysqli_query($con, "SELECT email, code, verified FROM users WHERE email='$email' AND code='$hash' AND verified='no'");
-    $verified_query = mysqli_query($con, "SELECT email, code, verified FROM users WHERE email='$email'");
+    $query = mysqli_query($con, "SELECT email, hash, verified FROM users WHERE email='$email' AND hash='$hash' AND verified='no'");
+    $verified_query = mysqli_query($con, "SELECT email, hash, verified FROM users WHERE email='$email'");
     $row = mysqli_fetch_array($verified_query);
     $count = mysqli_num_rows($query);
     if($count > 0) {
       $message = "Congratulations! Your account has been activated and you can login!";
-      $update_act = mysqli_query($con, "UPDATE users SET code='0', verified='yes' WHERE email='$email'");
+      $update_act = mysqli_query($con, "UPDATE users SET hash='0', verified='yes' WHERE email='$email'");
     }
     else {
       if($row['verified'] == "yes")
@@ -33,7 +33,7 @@
         ';
         $headers = 'From:noreply@example.com' . "\r\n"; // Set from headers
         mail($to, $subject, $message_body, $headers); // Send our email
-        $hash_update_query = mysqli_query($con, "UPDATE users SET code='$hash' WHERE email='$email'");
+        $hash_update_query = mysqli_query($con, "UPDATE users SET hash='$hash' WHERE email='$email'");
       }
     }
   }

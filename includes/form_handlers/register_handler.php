@@ -25,14 +25,14 @@
     $email = strip_tags($_POST['reg_email']);
     $email = mysqli_real_escape_string($con, $email);
     $email = str_replace(' ','',$email);
-    $email = ucfirst(strtolower($email));
+    $email = strtolower($email);
     $_SESSION['reg_email'] = $email;
 
     //Confirm Email
     $conf_email = strip_tags($_POST['reg_conf_email']);
     $conf_email = mysqli_real_escape_string($con, $conf_email);
     $conf_email = str_replace(' ','',$conf_email);
-    $conf_email = ucfirst(strtolower($conf_email));
+    $conf_email = strtolower($conf_email);
     $_SESSION['reg_conf_email'] = $conf_email;
     
     //Password and confirm password
@@ -74,14 +74,34 @@
     if(empty($error_array)) {
       $password = md5($password);
 
+      //Generating username by concatenating first name and last name
+      $last = "";
+      $row = "";
+      $username = strtolower($fname . "_" . $lname);
+      $check_username_query = mysqli_query($con, "SELECT username FROM users WHERE username='$username'");
+      $i = 0;
+      while(mysqli_num_rows($check_username_query) != 0) {
+        ++$i;
+        $username = $username . "_" . $i;
+        $check_username_query = mysqli_query($con, "SELECT username FROM users WHERE username='$username'");
+        if(mysqli_num_rows($check_username_query) != 0) {
+          $last = strrpos($username, "_");
+          $last = substr($last, strlen($username)-1);
+          $username = substr($username,0,$last-2);
+          if(is_numeric($last))
+            $i = (int)$last;
+        }
+      }
+
+      //Generating hash for verification
       $code_date = date("Y-m-d H:i:s");
       $code_date = md5($date);
       $code = md5(rand(0, 1000));
       $code = $code . $code_date;
       $hash = md5($code);
 
-      $query = mysqli_query($con, "INSERT INTO users VALUES('','$first_name','$last_name','$email','$password','$date','$hash','no')");
-      array_push($error_array, "<span style='color: #14C800;'>You're all set! Go ahead and verify your email with the link sent to your profile!</span><br>");
+      $query = mysqli_query($con, "INSERT INTO users VALUES('','$first_name','$last_name','$username','$email','$password','$date','$hash','no','no')");
+      array_push($error_array, "<span class='error_' style='color: #14C800;'>You're all set! Go ahead and verify your email with the link sent to your profile!</span><br>");
 
       $to = $email;
       $subject = 'Signup | Verification | Coinallet | Multiple Cryptocurrency Wallet'; // Give the email a subject 
