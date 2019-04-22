@@ -152,7 +152,8 @@ a {
     text-align: center;
     padding: 3px;
     background: #EDEDED;
-    border: 1px solid #DFDFDF;
+    border: 1px solid #EDEDED;
+    border-radius: 8px;
     text-decoration: none;
     position: relative;
     width: 35%;
